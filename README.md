@@ -1,3 +1,3 @@
 # Projet-Emove
 
-by Geoffrey,Vibita & Warren
+by Geoffrey, VibitaS & Warren
