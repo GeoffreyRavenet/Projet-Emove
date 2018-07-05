@@ -1,6 +1,7 @@
 var router = require('express').Router();
 
 var Vehicule = require('./../models/Vehicule');
+var Marque = require('./../models/Marque');
 
 router.get('/',(req, res) => {
     Vehicule.find({}).populate('marques').then(vehicules =>{
@@ -8,14 +9,20 @@ router.get('/',(req, res) => {
     })
 })
 router.get('/new', (req, res) => {
-    var vehicule = new Vehicule();
-    res.render('vehicules/edit.html', {vehicule: vehicule});
+    Marque.find({}).then(marques => {
+        var vehicule = new Vehicule();
+        res.render('vehicules/edit.html', {vehicule: vehicule , marques: marques});
+    })
+   
 })
 router.get('/edit/:id', (req , res) => {
-    Vehicule.findById(req.params.id).populate('marques').then(vehicule =>{
-        res.render('vehicules/edit.html', {vehicule: vehicule});  
-    }),
-    err => res.status(500).send(err);
+    Marque.find({}).then(marques =>{
+        Vehicule.findById(req.params.id).then(vehicule =>{
+            res.render('vehicules/edit.html', {vehicule: vehicule, marques: marques}); 
+        }),
+        err => res.status(500).send(err);
+    })
+   
 });
 router.get('/:id' , (req, res) => {
     Vehicule.findById(req.params.id).populate('marques').then(vehicule =>{
