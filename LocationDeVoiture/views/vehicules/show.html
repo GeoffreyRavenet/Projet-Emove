@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-9">
+            <h2>{{vehicule.name}} <small>{{vehicule.number}} roue</small></h2>
+            <hr>
+            <p class="lead">
+                {{vehicule.description}}
+            </p>
+            <h3>Marque :</h3>
+            {% for t in vehicule.marques %}
+                <span class="label">{{t.name}}</span>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+{% endblock %}

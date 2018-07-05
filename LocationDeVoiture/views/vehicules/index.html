@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h2>Véhicule</h2>
+
+    {% for p in vehicules %}
+        <div class="card">
+            <div class="card-header">
+                <a href="/{{p.id}}">{{p.name}}</a>
+                <a href="/edit/{{p.id}}" class="btn btn-primary " >Edit</a>
+            </div>
+            <div class="card-blocky">
+                {{p.description}}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
