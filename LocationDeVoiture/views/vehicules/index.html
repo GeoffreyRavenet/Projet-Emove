@@ -7,7 +7,8 @@
         <div class="card">
             <div class="card-header">
                 <a href="/{{p.id}}">{{p.name}}</a>
-                <a href="/edit/{{p.id}}" class="btn btn-primary " >Edit</a>
+                <a href="/edit/{{p._id}}" class="btn btn-info">Editer</a>
+                <a href="/delete/{{p._id}}" class="btn btn-danger">Supprimer</a>
             </div>
             <div class="card-blocky">
                 {{p.description}}
