@@ -1,0 +1,4 @@
+registration:
+    confirmed: 'Bienvenue %username% , your account is now activated sur Emotion !'
+    flash:
+        user_created: "Bienvenue sur Emotion !"

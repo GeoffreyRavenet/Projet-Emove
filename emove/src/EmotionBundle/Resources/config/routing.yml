@@ -1,0 +1,96 @@
+emotion_homepage:
+    path:     /
+    defaults: { _controller: EmotionBundle:Default:index }
+
+emotion_admin:
+    path:   /admin
+    defaults: { _controller: EmotionBundle:Admin:getadmin }
+
+emotion_users:
+    path:   /admin/users
+    defaults: { _controller: EmotionBundle:Admin:getusers }
+
+emotion_products:
+    path:   /products
+    defaults: { _controller: EmotionBundle:Product:getproducts }
+
+emotion_product:
+    path:   /product/{id}
+    defaults: { _controller: EmotionBundle:Product:getproduct }
+
+emotion_brands:
+    path:   /brand/{id}/products
+    defaults: { _controller: EmotionBundle:Product:getbrandproduct }
+
+emotion_categories:
+    path:   /category/{id}/products
+    defaults: { _controller: EmotionBundle:Product:getcategoryproduct }
+
+emotion_profil:
+    path:   /profil/{id}
+    defaults: { _controller: EmotionBundle:User:getprofil }
+
+emotion_updateprofil:
+    path:   /profil/update/{id}
+    defaults: { _controller: EmotionBundle:User:updateprofil }
+
+emotion_deleteuser:
+    path:     /profil/delete/{id}
+    defaults: { _controller:EmotionBundle:User:deleteuser }
+
+emotion_contact:
+    path:   /contact
+    defaults: { _controller: EmotionBundle:Default:contact }
+
+emotion_rent:
+    path:   /rent
+    defaults: { _controller: EmotionBundle:Rent:rent }
+
+emotion_succes:
+    path:   /succes
+    defaults: { _controller: EmotionBundle:Rent:succes }
+
+emotion_pdf:
+    path:   /pdf
+    defaults: { _controller: EmotionBundle:Pdf:index }
+
+# ACTION USER
+emotion_update_user:
+    path:     /admin/update-user/{id}
+    defaults: { _controller: EmotionBundle:Admin:updateUser }
+
+emotion_delete_user:
+    path:     /admin/delete-user/{id}
+    defaults: { _controller: EmotionBundle:Admin:deleteUser }
+# ACTION PRODUCT
+emotion_update_product:
+    path:     /admin/update-product/{id}
+    defaults: { _controller: EmotionBundle:Admin:updateProduct }
+
+emotion_delete_product:
+    path:     /admin/delete-product/{id}
+    defaults: { _controller: EmotionBundle:Admin:deleteProduct }
+# ACTION CATEGORY
+emotion_update_product_category:
+    path:     /admin/update-category/{id}
+    defaults: { _controller: EmotionBundle:Admin:updateCategory }
+
+emotion_delete_product_category:
+    path:     /admin/delete-category/{id}
+    defaults: { _controller: EmotionBundle:Admin:deleteCategory }
+# ACTION MARQUE
+emotion_update_brand:
+    path:     /admin/update-brand/{id}
+    defaults: { _controller: EmotionBundle:Admin:updateBrand }
+
+emotion_delete_brand:
+    path:     /admin/delete-brand/{id}
+    defaults: { _controller: EmotionBundle:Admin:deleteBrand }
+# ACTION MODEL
+emotion_update_model:
+    path:     /admin/update-model/{id}
+    defaults: { _controller: EmotionBundle:Admin:updateModel }
+
+emotion_delete_model:
+    path:     /admin/delete-model/{id}
+    defaults: { _controller: EmotionBundle:Admin:deleteModel }

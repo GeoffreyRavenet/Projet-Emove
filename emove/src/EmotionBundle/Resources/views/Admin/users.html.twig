@@ -1,0 +1,32 @@
+{% extends "EmotionBundle:default:layout.html.twig" %}
+
+{% block title %} eMotion - Utilisateur {% endblock %}
+
+{% block body %}
+<style>
+td {
+    border:1px solid black;
+    padding:30px;
+}
+</style>
+<div class="container">
+<table>
+    <tr>
+        <td>id</td>
+        <td>username</td>
+        <td>firstname</td>
+        <td>name</td>
+        <td>email</td>
+    </tr>
+{% for u in user %}
+    <tr>
+        <td>{{ u.id }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.firstname }}</td>
+        <td>{{ u.name }}</td>
+        <td>{{ u.email }}</td>
+    </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

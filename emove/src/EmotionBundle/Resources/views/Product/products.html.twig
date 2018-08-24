@@ -1,0 +1,54 @@
+{% extends "EmotionBundle:default:layout.html.twig" %}
+
+{% block title %} eMotion - Liste des véhicules {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ asset('css/products.css')}}">
+{% endblock %}
+{% block body %}
+
+<div class="container products_page">
+    <h2>Rechercher parmis nos véhicules</h2>
+    <section>
+        {#{{ dump(product) }}#}
+        {% for p in product %}
+        <article class="products">
+            <div class="entete">
+                <h3>{{ p.brand.brand }} {{ p.model.model }}</h3>
+                <h3>{{ p.name }}</h3>
+            </div>
+            <img src="{{ asset('uploads/images/products/'~p.image|e)}}" alt="" />
+            <a href="#">Disponible</a>
+            <h4>infos rapides</h4>
+            <div class="infos_rapides">
+                <h5><b>Année:</b> {{ p.year|date("Y") }}</h5>
+                <h5><b>Couleur:</b> {{ p.color }}</h5>
+                <h5><b>Compteur:</b> {{ p.kmnumber }} Km</h5>
+                <h5><b>Date de disponibilité:</b> {{ p.availabilitydate|date("d/m/Y") }}</h5>
+            </div>
+            <a href="{{ path('emotion_product', {'id': p.id}) }}">Voir la fiche</a>
+        </article>
+        {% endfor %}
+    </section>
+
+</div>
+{% endblock %}
+
+{#
+
+    <div class="container">
+        <section>
+            {% for p in product %}
+                <article>
+                    <h3>{{ p.name }}</h3>
+                    <h4>Année: {{ p.year|date('Y') }}</h4>
+                    <h4>Couleur: {{ p.color }}</h4>
+                    <h4>Compteur: {{ p.kmnumber }}</h4>
+                    <h4>Date de disponibilité: {{ p.availabilitydate|date("d/m/Y") }}</h4>
+                    <a href="{{ path('emotion_product', {'id': p.id}) }}">Voir la fiche</a>
+                </article>
+            {% endfor %}
+        </section>
+    </div>
+
+#}

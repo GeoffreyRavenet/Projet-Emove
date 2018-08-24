@@ -1,0 +1,27 @@
+{% extends "EmotionBundle:Default:layout.html.twig" %}
+
+{% block title %} Emotion - Votre commande a bien été prise en compte {% endblock %}
+{% block body %}
+    <div class="container admin_lists rent_page">
+        <h2 style="font-size:3em;">Votre commande a bien été prise en compte</h2>
+        <table>
+            <tr>
+                <td>Nom</td>
+                <td>Véhicule loué</td>
+                <td>Prix total de la commande</td>
+                <td>Date du début de la location</td>
+                <td>Date de fin de la location</td>
+                <td>Facture</td>
+            </tr>
+            <tr>
+                <td width="15%">{{ rent.user.firstname }} {{ rent.user.name }}</td>
+                <td width="30%"><a href="{{ path('emotion_product', {'id': rent.product.id}) }}"><b>{{ rent.product.brand.brand }} {{ rent.product.model.model }} :</b> {{ rent.product.name }}</a></td>
+                <td width="15%">{{ rent.product.price }} €</td>
+                <td width="20%">{{ rent.daterental|date("d/m/Y") }}</td>
+                <td width="20%">{{ rent.datedelivery|date("d/m/Y") }}</td>
+                <td><a target="_blank" href="{{ path('emotion_pdf', {'id': rent.id})  }}">{{ rent.invoice }}</a></td>
+            </tr>
+        </table>
+        <p class="legende">Vous pouvez télécharger la facture en cliquant sur le lien.</p>
+    </div>
+{% endblock %}

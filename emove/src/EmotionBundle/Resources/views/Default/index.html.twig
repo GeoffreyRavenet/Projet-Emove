@@ -1,0 +1,47 @@
+{% extends "EmotionBundle:default:layout.html.twig" %}
+{% block title %} Accueil - eMotion {% endblock %}
+
+{% block body %}
+    <div id="bandeau_home">
+        <div class="accroche">
+            <h1>eMove</h1>
+            <h2>Découvrez nos voitures<span>électrique</span></h2>
+        </div>
+    </div>
+    <div class="container">
+        <div id="form_home">
+            <form>
+                <input type="texte" placeholder="Saisissez une agence">
+                <input type="date"><input type="date">{#<input type="range">#}
+                <input type="submit">
+            </form>
+        </div>
+        <div class="strong_points">
+            <div>
+                <div class="circle">
+                    <i class="fa fa-map-o" aria-hidden="true"></i>
+                </div>
+                <p>Nos véhicules sont disponibles<br />partout en France</p>
+            </div>
+            <div>
+                <div class="circle">
+                    <i class="fa fa-car" aria-hidden="true"></i>
+                </div>
+                <p>0 émission de Co2<br />sur notre choix de véhicule</p>
+            </div>
+        </div>
+        <h3>Emove vous recommande</h3>
+    </div>
+    <ul class="rslides">
+        <li><img src="{{ asset('uploads/images/products/renault-zoe-x10-ph1-OV369-LIF-MA 10R-RTOL15.jpg.ximg.l_full_m.smart.jpg') }}" alt="" style="max-height: 500px;"></li>
+        <li><img src="{{ asset('img/bmw-i8-2016-sporty-electric-car-white-i8.jpg') }}" alt="" style="max-height: 500px;"></li>
+        <li><img src="{{ asset('uploads/images/products/tesla-model-s-bleu-620x413.jpg') }}" alt="" style="max-height: 500px;"></li>
+        <li><img src="{{ asset('uploads/images/products/tesla-model-s-bleu-620x413.jpg') }}" alt="" style="max-height: 500px;"></li>
+    </ul>
+  {#  <div id="highlight">
+
+    </div>#}
+    <div class="container">
+
+    </div>
+{% endblock %}

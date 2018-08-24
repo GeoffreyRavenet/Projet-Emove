@@ -1,0 +1,359 @@
+body {
+    background: white;
+    color: #676767;
+    font-family: 'Lato', sans-serif;
+}
+#wrapper {
+    min-height: 689px;
+}
+/* INDEX */
+#bandeau_home {
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.accroche {
+    margin: 0 auto;
+    text-align: center;
+}
+.accroche h1  {
+    margin-top: 20px;
+    font-size: 450%;
+    margin-bottom: 0;
+    text-shadow: 0px 0px 1px #676767;
+}
+.accroche h2 {
+    margin-top: 0;
+    text-shadow: 0px 0px 1px #676767;
+}
+.accroche h2 span {
+    display: block;
+    font-size: 255%;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+#form_home {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#form_home input {
+    height: 40px;
+    padding: 10px;
+    margin:5px;
+    font-size: 120%;
+}
+#form_home input[type="texte"] {
+    width: 320px;
+}
+#form_home input[type="date"] {
+    width: 170px;
+}
+#form_home input[type="submit"] {
+    background: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+#form_home input[type="submit"]:hover {
+    background: #0033ff;
+}
+.container h3 {
+    font-size: 200%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.strong_points {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.strong_points>div {
+    display: flex;
+    padding:0 50px;
+}
+.strong_points>div:last-of-type .circle {
+    background: #0182cc;
+}
+.strong_points p {
+    font-size: 120%;
+    margin: auto;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    margin-right: 25px;
+    background: #cc8201;
+}
+.circle i {
+    padding: 24px;
+    color: white;
+    font-size: 200%;
+}
+#highlight {
+    background: url('../img/bmw-i8-2016-sporty-electric-car-white-i8.jpg') no-repeat;
+    width: 100%;
+    height: 400px;
+    border-top:5px solid black;
+    border-bottom:3px solid black;
+}
+
+
+/* CONTACT */
+.contact{
+    background: rgba(255,255,255,0.7);
+    width: 40%;
+    padding-left: 2%;
+    padding-right: 2%;
+    float: right;
+}
+.contact h2 {
+    font-size: 3em;
+    margin: 30px 0 40px;
+    color: turquoise;
+}
+.contact h2, .contact h3 {
+    text-align: left;
+}
+.contact .blockh3 {
+    font-size: 0.8em;
+    color: turquoise;
+
+    border-radius: 4px;
+    width: fit-content;
+    height: -webkit-fill-available;
+
+}
+
+/* ADMIN CSS */
+.admin_page .intro {
+    margin-bottom: 30px;
+    font-size:1.5em;
+}
+.admin_page h2, .rent_page h2 {
+    font-size: 4em;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #676767;
+    margin-bottom: 30px;
+}
+.admin_lists h3 {
+    font-size: 3em;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #676767;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+.admin_bar ul {
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+.admin_bar ul li {
+    list-style-type: none;
+    margin: 10px;
+}
+.admin_forms {
+    display:none;
+    border: 1px solid #676767;
+    border-radius:4px;
+    margin-bottom: 20px;
+}
+.admin_forms>form>div {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    font-size: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.admin_forms textarea {
+    width: 39%;
+    min-height: 80px;
+}
+.admin_forms>form>div>div {
+    width: 48%;
+}
+.admin_forms>form>div>div>div, .admin_forms>form>div>div>div>div {
+    display: inline;
+}
+.admin_forms>form>div>div>div>#emotionbundle_product_availabilityDate_time {
+    display: block;
+    margin-left: 58%;
+}
+.admin_forms>form>div>div label {
+    width: 40%;
+    vertical-align: top;
+}
+.admin_forms>form>div label, .admin_forms>form>div input, .admin_forms>form>div select {
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 8px;
+}
+.admin_forms p {
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+.admin_forms h3 {
+    background-color: #f5f5f5;
+    border-bottom:1px solid #ddd;
+    margin-top: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-size: 3em;
+    margin-bottom: 30px;
+}
+.admin_lists {
+    clear: both;
+    margin-bottom:40px;
+    overflow: auto;
+}
+.admin_lists .alignleftTD {
+    text-align: left;
+    padding-left: 15px;
+}
+.admin_lists table {
+    width: 98%;
+    margin: 0 1%;
+}
+/*.admin_lists a {
+    color:blue;
+}*/
+.admin_lists table tr:first-of-type td {
+    background: blue;
+    color: white;
+    font-size: 1.3em;
+}
+.admin_lists table tr td {
+    text-align: center;
+    border: 1px solid black;
+    padding:20px 5px;
+}
+.admin_lists table tr:nth-child(2n+2) td {
+    background: #F5F5F5;
+}
+/* SLIDER */
+.rslides {
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+    max-height: 500px;
+    overflow: hidden;
+}
+/*REMI CSS*/
+
+.libelle{
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 10px;
+}
+
+.custom_padding{
+    padding-left: 50px;
+}
+
+/* REGISTER FORM */
+
+.title_form {
+    text-align: center;
+    font-size: 310%;
+    border-bottom: 1px solid;
+    padding-bottom: 15px;
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding-top: 30px;
+    letter-spacing: 2px;
+}
+form[name="fos_user_registration_form"] {
+    margin-bottom: 70px;
+}
+#fos_user_registration_form>div {
+    float: left;
+    width: 48%;
+    margin:0 1% 15px 1%;
+    font-size:16px;
+}
+#fos_user_registration_form>div label{
+    width: 40%;
+    margin-right:2%;
+}
+#fos_user_registration_form>div input {
+    width: 50%;
+}
+#fos_user_registration_form>div input, #fos_user_registration_form>div label {
+    padding: 5px;
+}
+#fos_user_registration_form_birthdate {
+    width: 50%;
+    float: right;
+    margin-right: 8%;
+}
+#fos_user_registration_form_birthdate>select {
+    width: 33%;
+    padding: 5px;
+}
+.submit_form {
+    clear: both;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+input[type="submit"], #login_form input[type="submit"], .admin_forms>form>div button[type="submit"] {
+    letter-spacing: 1px;
+    color: white;
+    background: blue;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+#login_form input[type="submit"] {
+    padding: 5px 20px;
+}
+.admin_forms>form>div button[type="submit"] {
+    display: block;
+    padding: 10px 50px;
+    margin: 0px auto 10px;
+}
+.admin_forms>form>div button[type="submit"]:hover, .admin_forms>form>div button[type="submit"]:focus{
+    background: blue;
+}
+#login_form {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+}
+#login_form input, #login_form label {
+    padding: 5px;
+    margin: 10px;
+}
+#login_form>div {
+    flex-direction: column;
+}
+
+.rent_page.admin_lists table {
+    margin: 0;
+    width: 100%;
+    margin-bottom: 20px;
+}
+p.legende, .product p.legende {
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+.payement {
+    float: right;
+}

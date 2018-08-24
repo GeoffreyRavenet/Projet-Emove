@@ -1,0 +1,22 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<h2 class="title_form">S'enregister</h2>
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.firstName) }}
+        {{ form_row(form.plainPassword) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.birthdate) }}
+        {{ form_row(form.zipCode) }}
+        {{ form_row(form.city) }}
+        {{ form_row(form.address) }}
+        {{ form_row(form.country) }}
+        {{ form_row(form.phone) }}
+        {{ form_row(form.driverLicence) }}
+        {{ form_row(form.loyaltyPoints) }}
+        <div class="submit_form">
+            <input type="submit" value="{{ 'registration.submit'|trans }}" />
+        </div>
+{{ form_end(form) }}

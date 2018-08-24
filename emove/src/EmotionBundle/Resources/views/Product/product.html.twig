@@ -1,0 +1,208 @@
+{% extends "EmotionBundle:default:layout.html.twig" %}
+{% block title %} eMotion - {{ product.brand.brand }} {{ product.model.model }} {% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ asset('css/products.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css')}}">
+{% endblock %}
+{% block body %}
+    <div class="container products_page">
+        <article class="product">
+            <div class="entete">
+                <h3><strong>{{ product.brand.brand }} {{ product.model.model }}</strong></h3>
+                <h3>{{ product.name }}</h3>
+            </div>
+            <div class="price">A partir de {{ product.price }}€/jour</div>
+            <img src="{{ asset('uploads/images/products/'~product.image|e)}}" alt="" />
+            <h3>Caractéristiques techniques</h3>
+            <ul>
+                <li><b>Année du modèle :</b> {{ product.year|date('Y') }}</li>
+                <li><b>Numéro de série :</b> {{ product.serialnumber }}</li>
+                <li><b>Couleur :</b> {{ product.color }}</li>
+                <li><b>Immatriculation :</b> {{ product.numberplate }}</li>
+                <li><b>Nombre de kilomètres :</b> {{ product.kmnumber }} Km</li>
+                <li><b>Date d'achat :</b> {{ product.purchasedate|date("d/m/Y") }}</li>
+                <li class="dispo"><b>Disponible le :</b> {{ product.availabilitydate|date("d/m/Y") }}<br />
+                <b>A partir de :</b> {{ product.availabilitydate|date("H:i") }}</li>
+            </ul>
+            <h3>Description du véhicule</h3>
+            <p>{{ product.description }}</p>
+            <div class="center">
+                <div>J'ai lu et j'accepte les <a href="" data-toggle="modal" data-target="#myModal" style="display: inline; width: 100%; text-align: center; background: none; padding: 0; font-size: 14px; color: black; bottom: 0; font-weight:bold;">C.G.U</a>
+                <input type="checkbox" class="acceptCGU"/></div>
+                <button type="button" id="rentProduct">Je reserve ce véhicule</button></div>
+
+            <div id="formRentProduct" style="display:none;">
+                {{ form(form) }}
+                <p class="legende">500km maximum par jour, tout dépassement de dates ou Km entraineront des pénalitées.</p>
+            </div>
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Conditions générales de ventes</h4>
+                        </div>
+                        <div class="modal-body">
+                            1.Objet<br><br>
+
+                            Les présentes mentions légales, conditions générales d’utilisation et de location s’appliquent sur toute utilisation du site EMOTION.com et l’utilisation de son système de location de voitures entre particuliers à l’aéroport. L’utilisation de ce Site et du système de location de voitures EMOTION est subordonnée à l’acceptation des conditions ici décrites. Les termes des présentes conditions générales d’utilisation pourront être à tout moment modifiés. Ces modifications engagent l'utilisateur dès leur mise en ligne. Il est en conséquence recommandé à l'utilisateur de consulter régulièrement les conditions générales afin de prendre connaissance de ces nouvelles conditions.<br><br>
+
+                            EMOTION a pour objectif de mettre en relation le propriétaire de véhicule (le Véhicule) souhaitant la louer sans chauffeur (le Propriétaire) avec le locataire de véhicule de courte durée (le Locataire) afin qu’ils réalisent une transaction de location de voitures. EMOTION n’est pas partie à la transaction de location entre le Propriétaire et le Locataire. Le contrat de location est conclu entre le Propriétaire et le Locataire.<br><br>
+
+                            Le rôle de EMOTION est exclusivement de mettre en relation le Propriétaire et le Locataire, souscrire une assurance couvrant le véhicule pendant la location et agir sous les ordres et décisions du Propriétaire pour exécuter les formalités de location de véhicule auprès du Locataire. EMOTION se limite à exécuter les procédures de location dans la limite de ses capacités de vérification, et ne saurait être tenu responsable par des éventuelles pertes en conséquence de l’utilisation de ses services.<br><br>
+
+                            Collecte d'informations nominatives<br><br>
+
+                            Aucune donnée personnelle n’est collectée à l’insu des utilisateurs. Les données nominatives demandées sur le site sont destinées exclusivement à l’usage de EMOTION et en aucun cas seront transmises à des partenaires commerciaux sans votre accord préalable.<br><br>
+
+                            Vous êtes informés que lors de vos visites sur le Site, un cookie peut être implanté dans votre ordinateur. Un cookie ne permet pas d'identifier l'utilisateur. De manière générale, il enregistre des informations relatives à la navigation de son ordinateur sur le site (les pages consultées, les informations fournies sur les formulaires, la date et l'heure de la consultation) qui pourront être lues lors de ses visites ultérieures.
+                            L'utilisateur peut s'opposer à l'enregistrement de cookies, ou être prévenu avant d'accepter les cookies, en faisant une configuration spécifique sur son ordinateur.
+                            EMOTION ne partage aucun de ses cookies avec des sites tiers.<br><br>
+
+                            Ces données pourront aussi être utilisées afin de faire des relevés statistiques de données agrégées sous forme anonyme pour estimer la fréquentation du Site ainsi que les usages faits par les internautes dans un but d’amélioration des services.<br>
+                            La durée de conservation maximale de ces informations dans votre ordinateur est de 12 mois à compter de la dernière connexion au Site. En acceptant les présentes conditions d'utilisation, l'internaute accepte expressément l'utilisation de cookies, la découverte du type de son système opérationnel, de son navigateur internet et de suivi d'IP et consent le traitement statistique des données ainsi recueillies.<br><br>
+
+                            Conformément à l'article 34 de loi " Informatique et Libertés ", loi n° 78-17 du 6 janvier 1978, modifiée par la loi du 6 août 2004 relative à l'informatique, aux fichiers et aux libertés vous disposez d'un droit d'accès, de modification, de rectification et de suppression des données vous concernant. Pour exercer ce droit, envoyer un courrier à EMOTION à l’adresse figurant en haut de cette page.<br><br>
+                            2.    Propriété intellectuelle et droit d'auteur<br><br>
+
+                            Ce Site appartient et est exploité par EMOTION. Il est composé d’éléments de modèle, propres à EMOTION et d’informations sur les véhicules en location. Tous les éléments composants du modèle ce Site, y compris la charte graphique, nom de domaine et tous autres signes distinctifs apparaissant sur le site http://www.EMOTION.com sont protégés par la législation en vigueur sur la propriété intellectuelle et le droit d’auteur, et appartiennent à EMOTION. Les informations relatives aux véhicules, leurs caractéristiques et disponibilités appartiennent aux propriétaires des véhicules.<br>
+                            Tous les droits de reproductions des éléments de modèle sont réservés. La reproduction sur support papier est autorisée sous réserve de respecter l’intégralité des documents reproduits, sans aucune modification ou altération et uniquement dans le cadre d'une utilisation dans le cercle de famille.<br>
+                            Toute exploitation non autorisée du site ou de son contenu engagerait votre responsabilité et constituerait une contrefaçon sanctionnée par les articles L335-2 et suivants du code de la Propriété Intellectuelle.<br>
+                            Tout lien en framing de ce Site est donc strictement interdit et en conséquence, aucun élément de modèle figurant sur une page de ce Site ne peut être partiellement ou totalement diffusé, transféré ou inséré sur un autre site, ni servir à créer des produits dérivés, sauf autorisation expresse.<br><br>
+                            3.    Sites de tiers et liens hypertextes<br><br>
+
+                            Le présent Site Internet peut contenir des liens vers d’autres sites Internet. Nous ne cautionnons pas ni n’endossons le contenu de ces sites Internet et CARSONAR n’est pas responsable des informations, éléments, produits ou services qui y sont contenus ou qui sont accessibles via ces sites. Vous accédez et utilisez ces sites Internet à vos risques et périls.<br>
+                            Les internautes qui soumettent des avis, des compléments d’information, des votes et des commentaires assument la responsabilité de leurs contenus et l’exactitude des informations transmises.<br>
+                            Vous reconnaissez être informé qu'un dispositif d'alerte est mis à tout moment à la disposition de toute personne qui désirerait signaler la publication sur les services interactifs de tout message à caractère litigieux dont elle aurait connaissance notamment ceux qui relèveraient des infractions prévues aux articles 24 alinéas 5 et 8 de la loi du 29 juillet 1881 sur la presse et 227-23 du Code Pénal, tels que l'apologie des crimes contre l'humanité, l'incitation à la haine raciale, la pornographie enfantine, conformément aux dispositions prévues par l'article 6 - I - 7. alinéas 3 et 4 de la loi n°2004-575  du 21 juin 2004 pour « La Confiance dans l'Economie Numérique ».<br>
+                            Pour exercer cette faculté et signaler un contenu illicite, vous devez adresser un message à l’adresse contact@EMOTION.com.<br>
+                            II est entendu, que le fait d'abuser de cette faculté est susceptible d'engager la responsabilité de celui qui l'exerce.<br>
+                            Notamment, sont susceptibles de donner lieu à des poursuites judiciaires :<br>
+                            - le fait de signaler un message ou une activité comme étant illicite dans le seul but d'en obtenir le retrait ou d'en faire cesser la diffusion, tout en sachant que cette information est inexacte,<br>
+                            - la dénonciation, effectuée par tout moyen de communication y compris par voie électronique et dirigée contre une personne déterminée, d'un fait qui est de nature à entraîner des sanctions judiciaires, et que l'on sait totalement ou partiellement inexact.<br>
+                            EMOTION se rapprocherait alors des sites afin d’examiner avec eux la suppression d'un tel avis ou commentaire dans le cas d'une inexactitude flagrante d'une information, de propos hors-sujet ou injurieux, de contenus contraires à la législation en vigueur à la date de publication du contenu visé.<br><br>
+                            4.    Conditions d’utilisation
+
+                            Afin d’utiliser les services de EMOTION, les conditions suivantes doivent impérativement être remplies :<br><br>
+
+                            Par le Propriétaire : Le Propriétaire doit s’inscrire sur le Site sous sa véritable identité. Le Propriétaire s’engage à ne proposer à la location que des véhicules en règle, dont l’entretien préconisé par le constructeur a été effectué, et dont tous les équipements de sécurité sont, à sa connaissance, en parfait état. Le Propriétaire prendra donc le soin de vérifier en particulier l’état des pneumatiques, des freins, le bon fonctionnement des phares, de la direction et la présence du gilet et le triangle de signalisation à bord de son véhicule. Pour proposer un véhicule à la location, le Propriétaire doit être et demeurer le titulaire du certificat d’immatriculation du Véhicule, ou avoir l’accord du titulaire du certificat d’immatriculation pour le mettre en location.<br><br>
+
+                            Par le Locataire : Le Locataire doit s’inscrire sur le Site sous sa véritable identité. L’identité de la personne se présentant pour louer le Véhicule doit correspondre à celle inscrite sur le Site et au payeur de la location. Les paiements sont faits par carte bancaire uniquement.<br><br>
+                            5.    Le processus de location EMOTION<br><br>
+
+                            Le Propriétaire souhaitant louer son véhicule pendant un voyage s’inscrit sur le Site et configure les dates de disponibilité de son véhicule. La publication d’une offre de location ne représente pas une charge pour le Propriétaire. Le prix de la location du Véhicule est fixé par EMOTION selon plusieurs règles, dont le prix de marché de location de voitures, la période de l’année et l’état de l’encours de véhicules offerts et demandés en location.<br><br>
+
+                            Le Locataire cherchant une voiture à louer visite EMOTION et consulte la liste des voitures disponibles selon l'agence de son choix et les dates de son voyage. Il choisit le Véhicule souhaité et fait une demande de réservation du Véhicule accompagnée d’une pré-autorisation de paiement par carte bancaire.<br><br>
+
+                            A la fin de la location, le Locataire dépose le véhicule dans l'agence EMOTION. EMOTION exécute les formalités de fin de location au nom du propriétaire et débite du locataire des éventuelles charges additionnelles de location, comme le kilométrage additionnel ou le carburant manquant. EMOTION restitue le véhicule au propriétaire à son retour de voyage.<br><br>
+
+                            Le LOCATAIRE a la possibilité d’annuler sa réservation gratuitement jusqu’à 72 heures avant le début de la location.<br><br>
+
+                            En cas d’annulation entre 72 et 48 heures avant le début de la location, 50% du montant de la réservation restera acquis à L’OPERATEUR. En cas d’annulation dans un délai inférieur à 48 heures, l’intégralité du montant de la location restera acquis à L’OPERATEUR.<br><br>
+
+                            En cas d'indisponibilité du véhicule réservé suite à une annulation du dépôt de la voiture par son propriétaire, EMOTION préviendra le locataire dans les meilleurs délais et lui proposera d'autres véhicules dans la limite des disponibilités du stock. Il ne pourra être demandé à EMOTION de fournir un autre véhicule à titre gracieux ni de surclasser le client sur un autre véhicule sans surcoût.<br><br>
+
+                            EMOTION facture ses services de mise en relation et de réalisation des procédures de location au Propriétaire. Les charges de service de EMOTION au propriétaire correspondent à une commission sur les montants de location plus une facturation de consigne sur les effets personnelles du client devant être stockés en agence (siège bébé, porte vélo, etc..), de nettoyage et/ou de réapprovisionnement en carburant du véhicule le cas échéant. Certains frais additionnels peuvent être prélevés au LOCATAIRE en plus du montant de base de la location :<br><br>
+
+                            Nettoyage<br>
+                            Réapprovisionnement en carburant<br>
+                            Options (GPS, Sièges enfants, Conducteur additionnel)<br>
+                            Packs kilométriques supplémentaires<br>
+                            Additionnel kilométrique<br>
+                            Pénalités de retard et de non-respect des conditions générales de location<br><br>
+
+                            Le montant des prestations de nettoyage, de réapprovisionnement en carburant, de location de matériel (GPS, Sièges,…), de conducteur additionnel et les éventuelles pénalités de retard et de non-respect des conditions générales de location sont acquis à 100% à L’OPERATEUR.<br><br>
+
+                            EMOTION reverse au propriétaire une commission qui varie selon la marque, le modèle, l'année du véhicule. Cette commission est directement proportionnelle au nombre de kilomètre parcourus par le véhicule pendant la location. Elle ne dépend pas du prix final de location facturé au locataire. Pour en savoir plus, simuler vos gains de location.<br><br>
+
+                            Le PROPRIETAIRE certifie que le véhicule est en bon état de fonctionnement, que l’entretient préconisé par le constructeur et le contrôle technique nécessaire ont été effectués et que tous les équipements de sécurité sont présents et en parfait état. Le PROPRIETAIRE déclare qu’à sa connaissance le véhicule ne présente aucun vice ou défaut susceptible de mettre en péril la sécurité du véhicule et de ses occupants. Il doit renoncer à louer le véhicule dans le cas contraire. Le PROPRIETAIRE s’engage à fournir un véhicule entièrement propre. Dans le cas contraire, des frais de nettoyage de 25€ seront appliqués. Il s’engage également à fournir un véhicule pourvu du plein de carburant (8/8èmes). Dans le cas contraire, des frais de réapprovisionnement seront facturés (10€ de frais de gestion + prix du carburant selon tarification EMOTION (1.6€/l diesel, 2€/l essence).<br><br>
+
+                            Le PROPRIETAIRE s’engage à fournir un véhicule entretenu en bon père de famille (pression et état des pneus, balais d’essuie-glace et du pare-brise en bon état, contrôle technique valide, niveaux faits, feux fonctionnels…). Dans le cas contraire, EMOTION se réserve la possibilité de changer les éléments défectueux et de facturer pièces et main d’œuvre ou de retirer le véhicule de son offre de location et de facturer les jours de parking consommés au PROPRIETAIRE à hauteur de 10€/jour.<br><br>
+
+                            Le PROPRIETAIRE reste, sans considération de la durée du dépôt auprès de EMOTION, responsable de l'entretien de son véhicule et des frais qui y sont liés dans le cadre d'une utilisation en bon père de famille (niveaux, pneus, freins, batterie, etc.). En cas de refus du PROPRIETAIRE de procéder à une opération de maintenance préconisée par EMOTION pour garantir la sécurité des locataires et l'intégrité du véhicule, EMOTION se réserve la possibilité de retirer le véhicule de son offre de location et de facturer les jours de parking consommés au PROPRIETAIRE à hauteur de 10€/jour.<br><br>
+
+                            La prise en charge du parking du véhicule est entièrement gratuite à l'exception des véhicules ne répondant pas aux critères de sélection de EMOTION :<br><br>
+
+                            équipements de sécurité fonctionnels (freins, ceintures, phares, etc..)<br>
+                            contrôle technique valide<br>
+                            valeur résiduelle de moins de 40 000€<br>
+                            immatriculation française<br>
+                            année de mise en circulation de moins de 10 ans<br>
+                            kilometrage inférieur à 130 000km<br>
+                            Carrosserie non accidentée et intérieur propre<br><br>
+
+                            .
+
+                            6.    L’assurance et les garanties de location<br><br>
+
+                            Toute location à travers le système EMOTION bénéficie de l’assurance et des garanties de location EMOTION. EMOTION souscrit pour les clients une assurance auprès de la société MAIF, dont les conditions qui figurent dans ce site font partie de ce contrat. Les conditions pour que la couverture d’assurance soit valable incluent, mais ne sont pas limitées à :<br><br>
+
+                            Le véhicule doit être un véhicule particulier immatriculé en France ;<br>
+                            Les conducteurs de la voiture doivent être âgés d’au moins 21 ans ;<br>
+                            Le Locataire doit avoir un permis émis par un pays de l’Union Européenne  ou un permis international depuis au moins 2 ans ;<br>
+                            Le véhicule doit circuler uniquement en France Métropolitaine, pays limitrophes, Royaume-Uni et Portugal.<br>
+                            Le véhicule doit servir à un usage privé uniquement. Le transport de passager et de marchandises à titre onéreux est exclu.<br>
+                            La carte bancaire ayant servi pour le paiement de la location doit être au nom du Locataire ;<br>
+                            Le véhicule doit déjà être couvert par un contrat d’assurance annuel en dehors de l’assurance proposée par EMOTION.<br>
+
+                            Ne peuvent bénéficier de l’assurance que les véhicules terrestres à moteur (à l’exclusion des quads et des buggys) de moins de 3,5 tonnes valablement immatriculés en France.<br><br>
+                            7.    Dépôt de garantie<br><br>
+
+                            Le Locataire louant des véhicules à travers le système EMOTION est tenu de payer un dépôt de location par carte bancaire pour pouvoir retirer les véhicules en location. En utilisant le service EMOTION, le Locataire prend un engagement ferme et irrévocable de payer le montant du dépôt de garantie à la fin de la location au cas où EMOTION relève des charges additionnelles à payer et sans pouvoir lui opposer aucune contestation ni exception. EMOTION débite le montant de garantie au nom du Propriétaire du Véhicule selon les règles définies pour la location du Véhicule. Si le Locataire entend contester le paiement du dépôt de garantie il lui appartiendra de se retourner contre le Loueur.<br><br>
+                            8.    Limitation de responsabilité et non responsabilité<br><br>
+
+
+                            EMOTION ne peut garantir l’exactitude, l’exhaustivité, l’actualité des informations diffusées sur le Site. Toutefois EMOTION s’efforce de tout mettre en œuvre pour diffuser des informations exactes et mises à jour. Vous reconnaissez utiliser ces informations sous votre responsabilité.<br><br>
+
+                            EMOTION ne peut être tenu responsable :<br><br>
+
+                            des erreurs ou omissions diffusées sur le Site,
+                            des dommages directs ou indirects, quelles qu'en soient les causes, natures et conséquences, qui pourraient résulter de l’accès ou de l’utilisation du Site, y compris l’accessibilité, les pertes de données, détérioration, destruction ou virus, qui pourraient affecter votre équipement et/ou de la présence de virus sur ce site.<br><br>
+
+                            Vous êtes informés des risques inhérents à internet, tout particulièrement en terme de :<br><br>
+
+                            défaut de sécurité dans la transmission des données ; <br>
+                            continuité non garantie dans l'accès au Site ou aux différents services offerts par le Site.<br><br>
+
+
+                            En aucun cas, EMOTION ne saurait être tenu responsable de ces risques et de leurs conséquences, préjudiciables, quelle qu'en soit l'étendue. Il vous appartient de prendre toutes les mesures appropriées de façon à protéger vos propres données, logiciels et matériels de la contamination par des virus ou autres formes d'attaques circulant éventuellement à travers le Site ou les informations publiées. Pour être prises en compte les réclamations devront être adressées à EMOTION par la voie postale uniquement sous la forme recommandée avec accusé de réception à l'adresse visée ci-dessus.<br><br>
+
+                            En mettant en relation le Propriétaire et le Locataire, et en exécutant les procédures de location au nom du Propriétaire, EMOTION ne donne aucune garantie ou assurance concernant la location. Chaque utilisateur des services EMOTION le fait à ses risques et périls. EMOTION se limite à exécuter les procédures de location et vérification décrites dans ce Site. EMOTION ne saurait engager sa responsabilité sur la location du véhicule ou sur des éventuelles pertes subies par un utilisateur. La location du Véhicule intervient exclusivement entre le Propriétaire et le Locataire du Véhicule.<br><br>
+
+                            EMOTION met en garde ses utilisateurs sur les risques de la location de voiture, et en particulier sur le risque des fautes intentionnelles ou de fraudes commises par les utilisateurs. EMOTION réalise un certain nombre de vérifications sur ses utilisateurs tel que décrit dans ce Site, mais qui ne sont pas exhaustives et ne garantissent pas les résultats de la location de voitures. EMOTION ne saurait être tenu pour responsable des pertes subies par un utilisateur.<br><br>
+
+                            En utilisant ce Site et le système de locations EMOTION, l’utilisateur accepte que le montant maximum qu’il est en droit de recouvrir en cas de perte découlant d’une action en responsabilité contre EMOTION est limité au prix effectivement payé à EMOTION ou à 100 euros lorsque aucun prix n’a été payé à EMOTION.<br><br>
+
+                            Aucune panne ni aucun dommage ne pourront être réclamés à EMOTION passé un délai de deux (2) heures après la récupération du véhicule par son propriétaire.<br><br>
+                            Droit applicable<br><br>
+
+                            Ce Site et son contenu sont régis par la loi française.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+
+    </div>
+
+{#    <div class="container">
+        <section>
+            <article>
+                {{ product.name }}
+                <h3>Caractéristiques techniques</h3>
+                {{ product.year|date('Y') }}
+                {{ product.serialnumber }}
+                {{ product.color }}
+                {{ product.numberplate }}
+                {{ product.kmnumber }}
+                {{ product.purchasedate|date("d/m/Y") }}
+                {{ product.availabilitydate|date("d/m/Y") }}
+                <h3>Description du véhicule</h3>
+            </article>
+        </section>
+    </div>#}
+{% endblock %}

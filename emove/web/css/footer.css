@@ -1,0 +1,51 @@
+/* FOOTER CSS */
+#footer {
+    width: 100%;
+    padding:30px 30px 10px 30px;
+    background: blue;
+    color: white;
+    font-size: 130%;
+}
+#footer .accroche {
+    margin-right: 50px;
+}
+#footer h1 {
+    font-size: 240%;
+}
+#footer h2 {
+    font-size: 100%;
+}
+#footer h4 {
+    font-size: 110%;
+}
+#footer a {
+    color: white;
+}
+#footer .container>div {
+    float: left;
+    margin-right: 50px;
+}
+#footer .container p {
+    clear: both;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 90%;
+}
+#footer .container  ul {
+    border-left: 1px solid #FFF;
+    padding-left: 25px;
+}
+/*#footer .container>div:last-of-type {
+    float: right;
+    text-align: right;
+}
+#footer .container>div:last-of-type ul {
+    border-left: none;
+    border-right: 1px solid white;
+}*/
+#footer .container>div:last-of-type {
+    margin-right: 0;
+}
+#footer .container ul li {
+    list-style-type: none;
+}

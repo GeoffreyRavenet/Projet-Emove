@@ -1,0 +1,54 @@
+<!doctype>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title id="title">
+        {% block title %}
+            eMotion
+        {% endblock %}
+        </title>
+        {# BOOTSTRAP CSS/JS #}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        {# CSS #}
+        <link rel="stylesheet" href="{{ asset('css/normalize.css')}}">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/mainNav.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/responsiveSlide.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/footer.css')}}">
+        <link rel="stylesheet" href="{{ asset('js/jquery-ui/jquery-ui.theme.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('js/jquery-ui/jquery-ui.min.css')}}">
+
+        {# FONT #}
+        <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
+
+        {# Si besoin d'un CSS/JS particulier #}
+        {% block head %}
+        {% endblock %}
+
+    </head>
+    <body>
+        <div id="wrapper">
+            {% block MainNav %}
+                {{ render(controller('EmotionBundle:MainNav:getMainNav')) }}
+            {% endblock %}
+            {% block body %}
+            {% endblock %}
+        </div>
+        {% block footer %}
+            {{ render(controller('EmotionBundle:FooterNav:getFooterNav')) }}
+        {% endblock %}
+        {% block JS %}
+            {# JQUERY #}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            {# BOOSTRAP #}
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+            <script src="{{ asset('js/jquery-ui/jquery-ui.min.js')}}"></script>
+            <script src="{{ asset('js/responsiveSlide.js')}}"></script>
+            <script src="{{ asset('js/main.js')}}"></script>
+            <script src="{{ asset('js/toastr.min.js')}}"></script>
+        {% endblock %}
+    </body>
+</html>

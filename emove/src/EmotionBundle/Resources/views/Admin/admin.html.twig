@@ -1,0 +1,181 @@
+{% extends "EmotionBundle:default:layout.html.twig" %}
+{% block title %} eMotion - Interface Administrateur {% endblock %}
+
+{% block body %}
+
+    <div class="container admin_page">
+        <h2> Interface administrateur </h2>
+        <p class="intro">Veuillez cliquez sur l'entrée de votre choix pour ajouter une nouvelle valeur.</p>
+        <nav class="admin_bar">
+            <ul>
+                <li><button type="button" class="btn btn-default add" id="btn_brand_form">Ajouter une nouvelle marque</button></li>
+                <li><button type="button" class="btn btn-default add" id="btn_model_form">Ajouter un nouveau modèle de véhicule</button></li>
+                <li><button type="button" class="btn btn-default add" id="btn_category_form">Ajouter une nouvelle catégorie de produit</button></li>
+                <li><button type="button" class="btn btn-default add" id="btn_product_form">Ajouter un nouveau produit</button></li>
+                {#<li><button type="button" class="btn btn-default add" id="btn_agency_form">Ajouter une nouvelle agence</button></li>#}
+            </ul>
+            <div>
+                <div class="admin_forms" id="brand_form">
+                    <h3>Ajouter une nouvelle marque</h3>
+                    {{ form(form) }}
+                    <p>Veuillez bien renseigner tous les champs demandé.</p>
+                </div>
+                <div class="admin_forms" id="model_form">
+                    <h3>Ajouter un nouveau modèle</h3>
+                    {{ form(formModel) }}
+                    <p>Veuillez bien renseigner tous les champs demandé.</p>
+                </div>
+                <div class="admin_forms" id="category_form">
+                    <h3>Ajouter une nouvelle catégorie de produit</h3>
+                    {{ form(formProductCategory) }}
+                    <p>Veuillez bien renseigner tous les champs demandé.</p>
+                </div>
+                <div class="admin_forms" id="product_form">
+                    <h3>Ajouter un nouveau Produit</h3>
+                    {{ form(formProduct) }}
+                    <p>Veuillez bien renseigner tous les champs demandé.</p>
+                </div>
+                <div class="admin_forms" id="agency_form">
+                    <h3>Ajouter une nouvelle agence</h3>
+                    {{ form(formAgency) }}
+                    <p>Veuillez bien renseigner tous les champs demandé.</p>
+                </div>
+            </div>
+            <p class="intro">Veuillez cliquez sur l'entrée de votre choix pour pour rechercher / modifier / supprimer une valeur en base de donnée.</p>
+            <ul>
+                <li><button type="button" class="btn btn-default view" id="btn_list_user">Rechercher tous Les utilisateurs</button></li>
+                <li><button type="button" class="btn btn-default view" id="btn_list_brand">Rechercher toutes les marques</button></li>
+                <li><button type="button" class="btn btn-default view" id="btn_list_models">Rechercher tous les modèles de véhicule</button></li>
+                <li><button type="button" class="btn btn-default view" id="btn_list_category">Rechercher toutes les catégories de produit</button></li>
+                <li><button type="button" class="btn btn-default view" id="btn_list_product">Rechercher tous les produits</button></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="admin_lists" id="list_user" style="display:none;">
+        <div class="container"><h3>Liste des Utilisateurs</h3></div>
+        <table>
+            <tr>
+                <td>id</td>
+                <td>Prénom</td>
+                <td>Nom</td>
+                <td>Email</td>
+                <td>Date de naissance</td>
+                <td>Pays</td>
+                <td>Code postal</td>
+                <td>Ville</td>
+                <td>Adresse</td>
+                <td>Téléphone</td>
+                <td>N° de permis de conduire</td>
+                <td>loyalty points</td>
+                <td colspan="2">Action</td>
+            </tr>
+            {% for u in user %}
+                <tr>
+                    <td>{{ u.id }}</td>
+                    <td>{{ u.firstname }}</td>
+                    <td>{{ u.name }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.birthdate|date("d/m/Y") }}</td>
+                    <td>{{ u.country }}</td>
+                    <td>{{ u.zipcode }}</td>
+                    <td>{{ u.city }}</td>
+                    <td>{{ u.address }}</td>
+                    <td>{{ u.phone }}</td>
+                    <td>{{ u.driverlicence }}</td>
+                    <td>{{ u.loyaltypoints }}</td>
+                    <td><a href="{{ path('emotion_update_user', {'id': u.id}) }}">Modifier</a></td>
+                    <td><a href="{{ path('emotion_delete_user', {'id': u.id}) }}">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="admin_lists" id="list_brand" style="display:none;">
+        <div class="container"><h3>Liste des marques</h3>
+            <table>
+                <tr>
+                    <td>id</td>
+                    <td>Marque</td>
+                    <td colspan="2">action</td>
+                </tr>
+                {% for b in brand %}
+                    <tr>
+                        <td>{{ b.id }}</td>
+                        <td>{{ b.brand }}</td>
+                        <td><a href="{{ path('emotion_update_brand', {'id': b.id}) }}">Modifier</a></td>
+                        <td><a href="{{ path('emotion_delete_brand', {'id': b.id}) }}">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="admin_lists" id="list_category" style="display:none;">
+        <div class="container"><h3>Liste des catégories de produit</h3>
+            <table>
+                <tr>
+                    <td>id</td>
+                    <td>Catégorie</td>
+                    <td colspan="2">Action</td>
+                </tr>
+                {% for c in productCategory %}
+                    <tr>
+                        <td>{{ c.id }}</td>
+                        <td>{{ c.category }}</td>
+                        <td><a href="{{ path('emotion_update_product_category', {'id': c.id}) }}">Modifier</a></td>
+                        <td><a href="{{ path('emotion_delete_product_category', {'id': c.id}) }}">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="admin_lists" id="list_models" style="display:none;">
+        <div class="container"><h3>Liste des modèles</h3>
+            <table>
+                <tr>
+                    <td>id</td>
+                    <td>Modèle</td>
+                    <td colspan="2">Action</td>
+                </tr>
+                {% for m in model %}
+                    <tr>
+                        <td>{{ m.id }}</td>
+                        <td>{{ m.model }}</td>
+                        <td><a href="{{ path('emotion_update_model', {'id': m.id}) }}">Modifier</a></td>
+                        <td><a href="{{ path('emotion_delete_model', {'id': m.id}) }}">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="admin_lists" id="list_product" style="display:none;">
+        <div class="container"><h3>Liste des produits</h3></div>
+        <table>
+            <tr>
+                <td>id</td>
+                <td>Nom</td>
+                <td>N° de série</td>
+                <td>Couleur</td>
+                <td>N° de plaque d'immatriculation</td>
+                <td>Nombre de Km</td>
+                <td>Prix d'achat du véhicule</td>
+                <td>Date d'achat</td>
+                <td>Date de disponibilité</td>
+                <td colspan="2">Action</td>
+            </tr>
+            {% for p in product %}
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td class="alignleftTD"><b><a href="{{ path('emotion_product', {'id': p.id}) }}">{{ p.brand.brand }} {{ p.model.model }} :</b> {{ p.name }}</a></td>
+                    <td>{{ p.serialnumber }}</td>
+                    <td>{{ p.color }}</td>
+                    <td>{{ p.numberplate }}</td>
+                    <td>{{ p.kmnumber }}</td>
+                    <td>{{ p.pricebuy }} €</td>
+                    <td>{{ p.purchasedate|date("d/m/Y") }}</td>
+                    <td>{{ p.availabilitydate|date("d/m/Y") }}</td>
+                    <td><a href="{{ path('emotion_update_product', {'id': p.id}) }}">Modifier</a></td>
+                    <td><a href="{{ path('emotion_delete_product', {'id': p.id}) }}">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

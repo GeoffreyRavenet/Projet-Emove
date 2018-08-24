@@ -1,0 +1,41 @@
+<footer id="footer">
+    <div class="container">
+        <div class="accroche">
+            <h1>eMove</h1>
+            <h2>Découvrez nos voitures<span>électriques</span></h2>
+        </div>
+        <div>
+        <h4>Rechercher par catégorie</h4>
+        <ul>{% for c in category %}
+                <li><a href="{{ path('emotion_categories', {'id': c.id}) }}">{{ c.category }}</a></li>
+            {% endfor %}
+        </ul>
+        </div>
+        <div>
+        <h4>Rechercher par marque</h4>
+        <ul>
+            {% for b in brand %}
+                <li><a href="{{ path('emotion_brands', {'id': b.id}) }}">{{ b.brand }}</a></li>
+            {% endfor %}
+        </ul>
+        </div>
+        <div>
+        <h4>Menu de connexion</h4>
+        <ul>
+            {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ path('emotion_admin') }}">Admin</a><li>
+                {% endif %}
+                {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ path('emotion_profil', {'id': id.id}) }}">Profil</a></li>
+        {% else %}
+            <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+            {% endif %}
+        </ul>
+        </div>
+    </div>
+</footer>

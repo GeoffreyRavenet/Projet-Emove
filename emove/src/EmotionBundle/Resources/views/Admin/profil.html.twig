@@ -1,0 +1,74 @@
+{% extends "EmotionBundle:default:layout.html.twig" %}
+
+{%  block head %}
+    <link rel="stylesheet" href="{{ asset('css/profil.css')}}">
+{% endblock %}
+{% block title %} eMotion - Profil {% endblock %}
+
+{% block body %}
+    <div class="container profil">
+        <div class="entete">
+            <h2>Profil</h2>
+            <a href="{{ path('emotion_deleteuser', {'id': user.id}) }}">Supprimer</a>
+            <a href="{{ path('emotion_updateprofil', {'id': user.id}) }}">Modifier</a>
+        </div>
+        <ul>
+            <li><b>Nom :</b> {{ user.name }}</li>
+            <li><b>Prénom :</b> {{ user.firstname }}</li>
+            <li><b>Date de naissance :</b> {{ user.birthdate|date("d/m/Y") }}</li>
+            {% if user.zipcode %}
+                <li><b>Code postal :</b> {{ user.zipcode }}</li>
+            {% endif %}
+            {% if user.city %}
+                <li><b>Ville :</b> {{ user.city }}</li>
+            {% endif %}
+            {% if user.address %}
+                <li><b>Adresse :</b> {{ user.address }}</li>
+            {% endif %}
+            {% if user.country %}
+                <li><b>Pays :</b> {{ user.country }}</li>
+            {% endif %}
+            {% if user.phone %}
+                <li><b>Téléphone :</b> {{ user.phone }}</li>
+            {% endif %}
+            {% if user.driverlicence %}
+                <li><b>Numéro de permis de conduire :</b> {{ user.driverlicence }}</li>
+            {% endif %}
+        </ul>
+		<h2 style="margin-top:40px;">Mes factures</h2>
+        <div class="admin_lists" style="margin-top: 30px;">
+            <table style="margin: auto 0; width: 100%">
+                <tr>
+                    <td>Véhicule loué</td>
+                    <td>Prix total de la commande</td>
+                    <td>Date du début de la location</td>
+                    <td>Date de fin de la location</td>
+                    <td>Pdf</td>
+                </tr>
+                {% for r in rent %}
+                <tr>
+                    <td width="30%"><a href="{{ path('emotion_product', {'id': r.product.id}) }}"><b>{{ r.product.brand.brand }} {{ r.product.model.model }} :</b> {{ r.product.name }}</a></td>
+                    <td width="15%">{{ r.product.price }} €</td>
+                    <td width="20%">{{ r.daterental|date("d/m/Y") }}</td>
+                    <td width="20%">{{ r.datedelivery|date("d/m/Y") }}</td>
+                    <td width="15%"><a href="{{ path('emotion_pdf', {'id': r.id}) }}" target="_blank">{{ r.invoice }}</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{#
+->add('firstName')
+->add('name')
+->add('birthdate')
+->add('zipCode')
+->add('city')
+->add('address')
+->add('country')
+->add('phone')
+->add('driverLicence')
+->add('loyaltyPoints', HiddenType::class, array(
+'data' => '0',
+))#}
